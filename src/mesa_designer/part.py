@@ -26,9 +26,9 @@ class Annotation:
 
 
 class AnnotatedPart:
-    def __init__(self, sequence: str, name: str, part_id: str | None=None, description: str | None=None, annotations: list[Annotation] | None=None) -> None:
+    def __init__(self, sequence: str, name: str, part_id: str | None=None, description: str | None=None, seq_annotations: list[Annotation] | None=None) -> None:
         self.sequence: str = sequence if sequence else ""
-        self.annotations: list[Annotation] = annotations if annotations else []
+        self.annotations: list[Annotation] = seq_annotations if seq_annotations else []
         self.name: str = name if name else "no_name"
         self.part_id: str = part_id if part_id else name
         self.description: str = description if description else name

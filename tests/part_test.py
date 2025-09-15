@@ -1,4 +1,4 @@
-from mesa_designer.part import *
+from mesa_designer.mesa import *
 
 def test_annotation():
     a = Annotation("test", 5, 10, part_type="CDS")

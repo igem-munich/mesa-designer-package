@@ -27,7 +27,7 @@ class MesaChain:
 
         self.parts["binder"] = AnnotatedPart(sequence=sequence,
                                              name=name if name else "Binder",
-                                             annotations=[Annotation("Binder" if not annotation else annotation)])
+                                             seq_annotations=[Annotation("Binder" if not annotation else annotation)])
 
         return self
 
@@ -38,7 +38,7 @@ class MesaChain:
 
         self.parts["tmd_linker"] = AnnotatedPart(sequence=sequence,
                                                  name=name if name else "TMD Linker",
-                                                 annotations=[Annotation("Linker" if not annotation else annotation)])
+                                                 seq_annotations=[Annotation("Linker" if not annotation else annotation)])
 
         return self
 
@@ -53,7 +53,7 @@ class MesaChain:
 
         self.parts["protease"] = AnnotatedPart(sequence=proteases[protease_name],
                                                name=protease_name,
-                                               annotations=[Annotation(name=protease_name)])
+                                               seq_annotations=[Annotation(name=protease_name)])
 
         return self
 
@@ -64,7 +64,7 @@ class MesaChain:
 
         self.parts["protease"] = AnnotatedPart(sequence=sequence,
                                                name=name if name else "Protease",
-                                               annotations=[Annotation("Protease" if not annotation else annotation)])
+                                               seq_annotations=[Annotation("Protease" if not annotation else annotation)])
 
         return self
 
@@ -77,7 +77,7 @@ class MesaChain:
 
         self.parts["prs"] = AnnotatedPart(sequence=PRS_DATA[prs_name][1],
                                           name=prs_name,
-                                          annotations=[Annotation(prs_name)])
+                                          seq_annotations=[Annotation(prs_name)])
 
         return self
 
@@ -87,7 +87,7 @@ class MesaChain:
 
         self.parts["prs"] = AnnotatedPart(sequence=sequence,
                                           name=name if name else "PRS",
-                                          annotations=[Annotation(name="PRS" if not annotation else annotation)])
+                                          seq_annotations=[Annotation(name="PRS" if not annotation else annotation)])
 
         return self
 
@@ -97,7 +97,7 @@ class MesaChain:
 
         self.parts["cargo"] = AnnotatedPart(sequence=sequence,
                                             name=name if name else "Cargo",
-                                            annotations=[Annotation(name="Cargo" if not annotation else annotation)])
+                                            seq_annotations=[Annotation(name="Cargo" if not annotation else annotation)])
 
         return self
 
@@ -109,7 +109,7 @@ class MesaChain:
 
         self.parts["tmd"] = AnnotatedPart(sequence=TMD_DATA[tmd_name][1],
                                           name=f"{tmd_name}_TMD",
-                                          annotations=[Annotation(f"{tmd_name}_TMD")])
+                                          seq_annotations=[Annotation(f"{tmd_name}_TMD")])
 
         return self
 
@@ -119,7 +119,7 @@ class MesaChain:
 
         self.parts["tmd"] = AnnotatedPart(sequence=sequence,
                                           name=name if name else "TMD",
-                                          annotations=[Annotation(f"{name}_TMD" if not annotation else annotation)])
+                                          seq_annotations=[Annotation(f"{name}_TMD" if not annotation else annotation)])
 
         return self
 
@@ -134,7 +134,7 @@ class MesaChain:
 
         self.parts["signal_peptide"] = AnnotatedPart(sequence=SIGNAL_SEQS[peptide_name][1],
                                                      name=f"{peptide_name}_Signal_Peptide",
-                                                     annotations=[Annotation(f"{peptide_name}_Signal_Peptide")])
+                                                     seq_annotations=[Annotation(f"{peptide_name}_Signal_Peptide")])
 
         return self
 
@@ -145,8 +145,7 @@ class MesaChain:
 
         self.parts["signal_peptide"] = AnnotatedPart(sequence=sequence,
                                                      name=name if name else "Signal_Peptide",
-                                                     annotations=[Annotation(
-                                                         f"{annotation}_Signal_Peptide" if not annotation else annotation)])
+                                                     seq_annotations=[Annotation(f"{annotation}_Signal_Peptide" if not annotation else annotation)])
 
         return self
 
@@ -158,7 +157,7 @@ class MesaChain:
 
         self.parts["aip"] = AnnotatedPart(sequence=AIP_DATA[aip_name][1],
                                           name=f"{aip_name}_AIP",
-                                          annotations=[Annotation(f"{aip_name}_AIP")])
+                                          seq_annotations=[Annotation(f"{aip_name}_AIP")])
 
         return self
 
@@ -168,7 +167,7 @@ class MesaChain:
 
         self.parts["aip"] = AnnotatedPart(sequence=sequence,
                                           name=name,
-                                          annotations=[Annotation(f"{name}_AIP" if not annotation else annotation)])
+                                          seq_annotations=[Annotation(f"{name}_AIP" if not annotation else annotation)])
 
         return self
 
@@ -224,7 +223,7 @@ class MesaChain:
                              name=name,
                              part_id=part_id if part_id else name,
                              description=description if description else name,
-                             annotations=seq_annotations)
+                             seq_annotations=seq_annotations)
 
     def to_genbank_string(self) -> str:
         return self.to_annotated_part(name="mesa_chain").to_genbank_string()
