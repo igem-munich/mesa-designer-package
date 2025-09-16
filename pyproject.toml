@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mesa-designer"
-version = "0.0.1"
+version = "1.0.0"
 authors = [
   { name="Aeneas Tews", email="aeneas.tews@icloud.com" },
 ]
