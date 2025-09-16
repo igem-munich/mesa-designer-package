@@ -7,19 +7,17 @@ from io import StringIO
 
 
 class Annotation:
-    def __init__(self, name: str, start: int | None=None, stop: int | None=None, part_type: str | None=None) -> None:
+    def __init__(self, name: str, sequence: str, start: int | None=None, stop: int | None=None, part_type: str | None=None) -> None:
         self.name: str = name
         self.start: int = start if start else 0
-        self.stop: int = stop if stop else len(name)
+        self.stop: int = stop if stop else len(sequence)
         self.type: str | None = part_type if part_type else "CDS"
-
 
     def shift_annotation(self, amount: int) -> Annotation:
         self.start += amount
         self.stop += amount
 
         return self
-
 
     def to_seq_feature(self) -> SeqFeature:
         return SeqFeature(location=FeatureLocation(self.start, self.stop), type=self.type, qualifiers={"name": self.name})
@@ -33,14 +31,11 @@ class AnnotatedPart:
         self.part_id: str = part_id if part_id else name
         self.description: str = description if description else name
 
-
     def get_sequence(self) -> str:
         return self.sequence
 
-
     def get_annotations(self) -> list[Annotation]:
         return self.annotations
-
 
     def add_annotation(self, annotation: Annotation) -> AnnotatedPart:
         if self.annotations is None:
@@ -50,7 +45,6 @@ class AnnotatedPart:
         self.annotations.append(annotation)
 
         return self
-
 
     def add_annotations(self, seq_annotations: list[Annotation]) -> AnnotatedPart:
         if self.annotations is None:
@@ -74,17 +68,14 @@ class AnnotatedPart:
 
         return self
 
-
     def get_seq_record(self) -> SeqRecord:
         return SeqRecord(Seq(self.sequence), id=self.part_id, name=self.name, description=self.description, features=[
             annotation.to_seq_feature() for annotation in self.annotations], annotations={"molecule_type": "PROTEIN"})
-
 
     def to_genbank_string(self) -> str:
         f: StringIO = StringIO()
         SeqIO.write(self.get_seq_record(), f, "genbank")
         return f.getvalue()
-
 
     def save_genbank_file(self, file_path: str) -> None:
         content: str = self.to_genbank_string()
