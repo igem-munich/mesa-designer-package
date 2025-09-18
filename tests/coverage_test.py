@@ -16,7 +16,7 @@ def test_mesa_chain():
     chain_a.add_prs(prs_name="PRS")
     chain_b.add_custom_prs(sequence="CUSTOMPRS", name="custom_b_prs", annotation="custom_b_annotation")
 
-    chain_a.add_target(sequence="CHAINATARGET", name="chain_a_target", annotation="chain_a_target_annotation")
+    chain_a.add_cargo(sequence="CHAINATARGET", name="chain_a_target", annotation="chain_a_target_annotation")
 
     chain_a.add_tmd("FGFR4")
 
