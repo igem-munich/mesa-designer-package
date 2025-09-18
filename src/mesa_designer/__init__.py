@@ -41,3 +41,16 @@ with open(DATA_DIR / "signal_seqs/signal_sequences.json", "r") as f:
 # Load tag sequences data from a JSON file.
 with open(DATA_DIR / "tags/tag_sequences.json", "r") as f:
     TAG_SEQS: dict = dict(json.load(f))
+
+# export all data for an easy overview
+ALL_DATA = {
+    "tmd": TMD_DATA,
+    "aip": AIP_DATA,
+    "fret": FRET_ICDs,
+    "ctev": CTEV_DATA,
+    "ntev": NTEV_DATA,
+    "tev": TEVP_DATA,
+    "prs": PRS_DATA,
+    "signal": SIGNAL_SEQS,
+    "tag": TAG_SEQS
+}
