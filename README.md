@@ -1,4 +1,4 @@
-![igem_munich_logo](src/mesa_designer/img/dark.png)
+![igem_munich_logo]([src/mesa_designer/img/dark.png](https://github.com/igem-munich/mesa-designer-package/raw/master/src/mesa_designer/img/dark.png))
 # iGEM Munich
 iGEM Munich is a TUM & LMU student club focused on participating in the iGEM competition as well as outreach and public 
 education. Find more information at: [iGEM Munich](https://igem-munich.com) about our Team or click 
